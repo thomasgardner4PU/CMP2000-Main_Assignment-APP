@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class AdminPage extends JFrame {
+public class Kiosk extends JFrame {
 
     private JPanel AdminPanel;
     private JLabel WelcomeLbl;
