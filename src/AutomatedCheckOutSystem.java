@@ -4,6 +4,8 @@ import java.awt.*;
 public class AutomatedCheckOutSystem extends JFrame {
 
     private JPanel mainPanel;
+    private JLabel welcomeLbl;
+    private JButton BeginScanBtn;
 
     public static void main(String[] args ) {
         AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("loading from file");
