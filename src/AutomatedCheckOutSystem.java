@@ -22,7 +22,12 @@ public class AutomatedCheckOutSystem extends JFrame {
         BeginScanBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Code below allows the JButton BeginScanBtn to open other form, allowing
+                // the user to begin their order.
+                Kiosk kiosk = new Kiosk(loading_from_file);
+                kiosk.show(); // display the kiosk form
 
+                dispose(); // close current frame after opening the Kiosk menu
             }
         });
     }
