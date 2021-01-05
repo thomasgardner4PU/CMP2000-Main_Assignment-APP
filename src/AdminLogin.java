@@ -23,9 +23,8 @@ public class AdminLogin extends JFrame {
 
                 if (uname.equals("Morrisons") & Pass.equals("1992")){
 
-                    Kiosk hframe = new Kiosk();
-
-                    hframe.setVisible(true);
+                    Stock stock = new Stock();
+                    stock.show();
 
                 }else {
 
