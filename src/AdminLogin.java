@@ -1,13 +1,6 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class AdminLogin extends JFrame {
 
@@ -20,24 +13,30 @@ public class AdminLogin extends JFrame {
     private JTextField textField2;
 
     public AdminLogin() {
-        setContentPane(MainPanel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(500, 500));
-        pack();
         LoginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // code for opening stock menu
-                Stock Page = new Stock();
-                Page.setVisible(true);
+
+                String uname = AdminUsername.getText();
+
+                String Pass = AdminPassword.getText();
+
+                if (uname.equals("Morrisons") & Pass.equals("1992")){
+
+                    Stock stock = new Stock();
+                    stock.show();
+
+                }else {
+
+                    AdminLogin lframe = new AdminLogin();
+
+                    JOptionPane.showMessageDialog(lframe, "Invalid");
+
+                }
+
             }
         });
     }
-
-    public void setPassword(String[] userData) {
-    }
-
-    //add code here which mentions load method from AdminUser class
 }
 
 
