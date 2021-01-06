@@ -9,11 +9,6 @@ public class AutomatedCheckOutSystem extends JFrame {
     private JLabel welcomeLbl;
     private JButton BeginScanBtn;
 
-    public static void main(String[] args ) {
-        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("loading from file");
-        Page.setVisible(true);
-    }
-
     public AutomatedCheckOutSystem(String loading_from_file) {
         setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,4 +26,5 @@ public class AutomatedCheckOutSystem extends JFrame {
             }
         });
     }
+
 }

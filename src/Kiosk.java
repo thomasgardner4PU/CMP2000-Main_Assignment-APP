@@ -18,14 +18,10 @@ public class Kiosk extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500,500));
         pack();
-    }
-
-    public Kiosk() {
-
         StaffBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StaffLogin Page = new StaffLogin();
+                AdminLogin Page = new AdminLogin();
                 Page.show();
 
                 dispose();
