@@ -1,5 +1,0 @@
-pizza|5.39|10
-teabags|1.99|20
-flourpacks|3.99|5
-apples|0.50|30
-banana|1.00|25
