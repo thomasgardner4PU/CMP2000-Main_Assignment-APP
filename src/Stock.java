@@ -9,7 +9,9 @@ public class Stock extends JFrame {
     private JPanel mainPanel;
     private JLabel lbl;
 
-    public Stock (){
+    public Stock (String title){
+
+        super(title);
         setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500,500));
