@@ -1,12 +1,9 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminLogin extends JFrame {
@@ -16,8 +13,32 @@ public class AdminLogin extends JFrame {
     private JButton LoginBtn;
     private JLabel AdminPassword;
     private JLabel AdminUsername;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField txtUserName;
+    private JTextField txtPassword;
+
+    static AdminData[] accountsDatabase = new AdminData[1];
+
+    public static void main(String[] args ) {
+        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("nextPage");
+        Page.setVisible(true);
+        String filePath = ("src\\resources\\admin.txt");
+            try {
+                File file = new File(filePath);
+
+                try (Scanner scanner = new Scanner(file)) {
+                    scanner.useDelimiter("\n");
+                    while (scanner.hasNextLine()) {
+                        for (int i = 0; i < accountsDatabase.length; i++) {
+                            String tempName = scanner.nextLine();
+                            String tempPassword = scanner.nextLine();
+                            accountsDatabase[i] = new AdminData(tempName, tempPassword);
+                        }
+                    }
+                }
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+        }
 
     public AdminLogin() {
         setContentPane(MainPanel);
@@ -27,14 +48,28 @@ public class AdminLogin extends JFrame {
         LoginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // code for opening stock menu
-                Stock Page = new Stock();
-                Page.setVisible(true);
+                AuthenticateUser(txtUserName.getText(), new String(txtPassword.getText()));
             }
         });
     }
 
-    public void setPassword(String[] userData) {
+    public void AuthenticateUser(String usernameData, String passwordData) {
+        boolean matchNotFound = true;
+        for (int i = 0; i < accountsDatabase.length; i++){
+            if (accountsDatabase[i].username.equals(usernameData) && accountsDatabase[i].password.equals(passwordData)){
+                matchNotFound = false;
+                break;
+            }
+        }
+
+        if (matchNotFound){
+            System.out.println("Match Not Found");
+        }
+
+        else {
+            Stock nextPage = new Stock("NextPage");
+            nextPage.setVisible(true);
+        }
     }
 
     //add code here which mentions load method from AdminUser class

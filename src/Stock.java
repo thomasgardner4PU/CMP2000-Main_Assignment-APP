@@ -14,7 +14,9 @@ public class Stock extends JFrame {
     private JTextArea DisplayList;
     private JButton EditStock;
 
-    public Stock (){
+    public Stock (String title){
+
+        super(title);
         setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000,1000));

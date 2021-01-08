@@ -9,7 +9,7 @@ public class AutomatedCheckOutSystem extends JFrame {
     private JLabel welcomeLbl;
     private JButton BeginScanBtn;
 
-    public AutomatedCheckOutSystem(String loading_from_file) {
+    public AutomatedCheckOutSystem(String nextPage) {
         setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500,500));
@@ -19,7 +19,7 @@ public class AutomatedCheckOutSystem extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Code below allows the JButton BeginScanBtn to open other form, allowing
                 // the user to begin their order.
-                Kiosk kiosk = new Kiosk(loading_from_file);
+                Kiosk kiosk = new Kiosk(nextPage);
                 kiosk.show(); // display the kiosk form
 
                 dispose(); // close current frame after opening the Kiosk menu
