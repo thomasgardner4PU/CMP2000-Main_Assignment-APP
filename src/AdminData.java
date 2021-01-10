@@ -1,10 +1,12 @@
-import java.util.Set;
-
 public class AdminData {
 
-    public String username;
+    //variable for username and password
 
-    public String password;
+    String username;
+    String password;
+
+    public AdminData() {
+    }
 
     public AdminData(String loginName, String loginPassword) {
         this.username = loginName;
@@ -27,7 +29,3 @@ public class AdminData {
         username = adminUsername;
     }
 }
-
-    //variable for username and password
-
-    //getter and setter for username and password

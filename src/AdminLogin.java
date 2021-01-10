@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -19,14 +17,17 @@ public class AdminLogin extends JFrame {
     static AdminData[] accountsDatabase = new AdminData[1];
 
     public static void main(String[] args ) {
+        /*Dataloader dataloader = new Dataloader();
+        dataloader.LoadAdminData();*/
+
         AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("nextPage");
         Page.setVisible(true);
-        String filePath = ("src\\resources\\admin.txt");
+        String filePath = ("src//resources//admin.txt");
             try {
                 File file = new File(filePath);
 
                 try (Scanner scanner = new Scanner(file)) {
-                    scanner.useDelimiter("\n");
+                    scanner.useDelimiter("\n"); //
                     while (scanner.hasNextLine()) {
                         for (int i = 0; i < accountsDatabase.length; i++) {
                             String tempName = scanner.nextLine();
@@ -40,22 +41,18 @@ public class AdminLogin extends JFrame {
             }
         }
 
-    public AdminLogin() {
+
+        public AdminLogin() {
         setContentPane(MainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
         pack();
-        LoginBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AuthenticateUser(txtUserName.getText(), new String(txtPassword.getText()));
-            }
-        });
+        LoginBtn.addActionListener(e -> AuthenticateUser(txtUserName.getText(), txtPassword.getText()));
     }
 
     public void AuthenticateUser(String usernameData, String passwordData) {
         boolean matchNotFound = true;
-        for (int i = 0; i < accountsDatabase.length; i++){
+        for (int i = 0; i <accountsDatabase.length; i++) {
             if (accountsDatabase[i].username.equals(usernameData) && accountsDatabase[i].password.equals(passwordData)){
                 matchNotFound = false;
                 break;
@@ -71,8 +68,6 @@ public class AdminLogin extends JFrame {
             nextPage.setVisible(true);
         }
     }
-
-    //add code here which mentions load method from AdminUser class
 }
 
 
