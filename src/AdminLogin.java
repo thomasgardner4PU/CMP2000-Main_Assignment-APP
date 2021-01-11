@@ -17,8 +17,9 @@ public class AdminLogin extends JFrame {
     static AdminData[] accountsDatabase = new AdminData[1];
 
     public static void main(String[] args ) {
-        /*Dataloader dataloader = new Dataloader();
-        dataloader.LoadAdminData();*/
+
+        Dataloader dataloader = new Dataloader();
+        dataloader.LoadAdminData();
 
         AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("nextPage");
         Page.setVisible(true);

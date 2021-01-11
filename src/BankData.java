@@ -1,4 +1,4 @@
-public class Bank {
+public class BankData {
     private String name;
     private int age;
     private float balance;

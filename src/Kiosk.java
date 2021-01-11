@@ -28,7 +28,6 @@ public class Kiosk extends JFrame {
 
     public static ArrayList<StockData> CurrentStock = new ArrayList<>();
 
-
     public static ArrayList<StockData> setArrayListStock(){
         return CurrentStock;
     }

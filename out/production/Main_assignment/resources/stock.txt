@@ -1,0 +1,4 @@
+beans|3.00|10
+brownbread|2.00|5
+whitebread|2.50|6
+flour|1.50|16
