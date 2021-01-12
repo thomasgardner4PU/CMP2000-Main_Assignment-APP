@@ -89,12 +89,18 @@ public class Reciept extends JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 System.out.println("Swing Worker Thread: " + Thread.currentThread().getName());
-                shoppingListTxt.setText("Printing Reciept");
-                for (int i = 0; i < 999999999; i++) {
-                    new Date();
+                shoppingListTxt.setText("Printing Receipt");
+                Thread.sleep(4000);
+                shoppingListTxt.setText("");
+                    //shoppingListTxt.setText(Dataloader.CompanyName + "\n" + Dataloader.DateOfPayment);
+                double total = 0.0;
+                for (StockData k : Kiosk.Map.keySet()) {
+                    total += Kiosk.Map.get(k) * Double.parseDouble(k.price);
+                    if (Kiosk.Map.get(k) > 0) { // displays if more then 0 has been ordered
+                        shoppingListTxt.setText(shoppingListTxt.getText() + Kiosk.Map.get(k) + " x " + k.name + "\n" + k.price + "\n£ each");
+                    }
                 }
-                    shoppingListTxt.setText(Kiosk.ShoppingCart);
-                    RunningTotal = 0.00f;
+                shoppingListTxt.setText(shoppingListTxt.getText() + "Total: " + total);
                 return null;
             }
         }.execute();

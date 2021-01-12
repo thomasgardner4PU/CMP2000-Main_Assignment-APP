@@ -14,11 +14,8 @@ import java.util.Scanner;
 public class Stock extends JFrame {
 
     public String filepathStockData = "src\\resources\\stock.txt";
-
     public String separator = "\\|";
-
     public ArrayList<StockData> CurrentStock = new ArrayList<>();
-
 
     private JPanel mainPanel;
     private JLabel lbl;

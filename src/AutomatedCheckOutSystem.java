@@ -20,6 +20,7 @@ public class AutomatedCheckOutSystem extends JFrame {
                 // Code below allows the JButton BeginScanBtn to open other form, allowing
                 // the user to begin their order.
                 Kiosk kiosk = new Kiosk();
+                Kiosk.innit();
                 kiosk.show(); // display the kiosk form
 
                 dispose(); // close current frame after opening the Kiosk menu

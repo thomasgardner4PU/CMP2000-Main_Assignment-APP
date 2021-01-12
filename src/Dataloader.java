@@ -5,13 +5,8 @@ import java.util.Scanner;
 public class Dataloader {
 
     public String filePathAdminData = "src\\resources\\admin.txt";
-
     public String filepathStockData = "src\\resources\\stock.txt";
-
     public static String filepathBankdata = "src\\resources\\bankInformation.txt"; //file does not exsist yet
-
-    public ArrayList<StockData> PrintReciept = new ArrayList<>();
-
     public String separator = "\\|";
 
     // ArrayList for AdminLogin constructor
@@ -27,10 +22,10 @@ public class Dataloader {
     public ArrayList<BankData> getArrayListBank() {
         return BankVerification;
     }
-
     public ArrayList<StockData> getArrayListStock(){
         return CurrentStock;
     }
+
 
     public void LoadAdminData() { //logic for AdminLogin class
         try {
@@ -51,11 +46,10 @@ public class Dataloader {
                 Accounts.add(admin);
 
                 System.out.println(admin);
-
-
             }
         scanner.close();
 
+            System.out.println("Login data has been successfully loaded");
 
         }catch (FileNotFoundException e){
             e.printStackTrace();
@@ -88,7 +82,7 @@ public class Dataloader {
             }
 
             scanner.close();
-            System.out.println("stock file loaded");
+            System.out.println("stock data has been successfully loaded");
 
 
         }catch (FileNotFoundException e) {
@@ -125,6 +119,8 @@ public class Dataloader {
             }
             scanner.close(); // Scanner closed and has finished reading file
 
+            System.out.println("Bank data has been successfully loaded");
+
 
         }catch // catch statement is used to 'catch' errors
         (FileNotFoundException e){  // the exception is used to find the error inside the try part of the statement
@@ -143,7 +139,6 @@ public class Dataloader {
                 if(index > 0) {
                     dataRow += "\n";
                 }
-
                 dataRow += BankVerification.get(index).getName();
 
                 String ageToString = Integer.toString(BankVerification.get(index).getAge());
@@ -157,6 +152,8 @@ public class Dataloader {
 
                 writer.write(dataRow);
             }
+
+            System.out.println("Save functionality successfull");
 
             writer.close();
 
@@ -172,4 +169,6 @@ public class Dataloader {
         }
         return BankVerification.get(index);
     }
+
+
 }

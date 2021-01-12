@@ -1,23 +1,15 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 
 public class BankVerificationScreen extends JFrame {
 
     private JPanel MainPanel;
     private JPanel Panel1;
     private JLabel VerificationLbl;
-    private JButton AcceptBtn;
-    private JButton DenyBtn;
-    private JTextArea recieptArea;
+    private JButton ConfirmPaymentBtn;
 
     public ArrayList<BankData> BankVerification = new ArrayList<>();
 
@@ -40,7 +32,7 @@ public class BankVerificationScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600,500));
         pack();
-        AcceptBtn.addActionListener(new ActionListener() {
+        ConfirmPaymentBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Reciept Page = new Reciept();
@@ -52,5 +44,6 @@ public class BankVerificationScreen extends JFrame {
     }
 
     public void dataInput() {
+
     }
 }
