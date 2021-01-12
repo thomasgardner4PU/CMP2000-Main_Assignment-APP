@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Kiosk extends JFrame {
 
+    public static String ShoppingCart;
+
     private final float TotalAmountPaid = 0.00f;
     private float TotalPrice; //Variable declared as float here to enable calculation of total price
 
@@ -25,6 +27,7 @@ public class Kiosk extends JFrame {
     private JLabel ShowChangeLbl;
     private JLabel TotalCashPriceLbl;
     private JLabel TotalLbl;
+    private JLabel changeLbl;
 
     public static ArrayList<StockData> CurrentStock = new ArrayList<>();
 
@@ -32,7 +35,7 @@ public class Kiosk extends JFrame {
         return CurrentStock;
     }
 
-    public Kiosk (String loading_from_file) {
+    public Kiosk () {
         setContentPane(KioskPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(700,700));
@@ -60,7 +63,9 @@ public class Kiosk extends JFrame {
                 for (StockData item: CurrentStock) { //creates variable of item stock
                     if (itembarcode.equals(item.name)){ //will fire is the itembarcode the customer has entered matches the itemname it is searching
                         itemsList.append(item.name + "\r\n"); // will add item to new line
+                        itemsList.append(item.price + "\r\n");
                         TotalPrice += Float.parseFloat(item.price);
+                        ShoppingCart = itemsList.getText();
                         updatepricelable();
                     }
                 }

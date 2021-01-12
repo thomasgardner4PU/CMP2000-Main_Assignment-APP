@@ -1,4 +1,4 @@
-beans|3.00|10
-brownbread|2.00|5
-whitebread|2.50|6
-flour|1.50|16
+beans|3.00|11|0
+brownbread|2.00|5|0
+whitebread|2.50|6|0
+flour|1.50|17|0

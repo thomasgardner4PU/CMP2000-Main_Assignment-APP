@@ -10,28 +10,26 @@ public class Dataloader {
 
     public static String filepathBankdata = "src\\resources\\bankInformation.txt"; //file does not exsist yet
 
+    public ArrayList<StockData> PrintReciept = new ArrayList<>();
+
     public String separator = "\\|";
 
-    // ArrayList for AdminLogin class
+    // ArrayList for AdminLogin constructor
     public ArrayList<AdminData> Accounts = new ArrayList<>();
 
-    //ArrayList for StockData class
+    //ArrayList for StockData constructor
     public ArrayList<StockData> CurrentStock = new ArrayList<>();
 
+    //ArrayList for BankData constructor
     private static final ArrayList<BankData> BankVerification = new ArrayList<BankData>();
 
-
-    // Getters and Setter for ArrayLists
+    // Getters for ArrayLists
     public ArrayList<BankData> getArrayListBank() {
         return BankVerification;
     }
 
     public ArrayList<StockData> getArrayListStock(){
         return CurrentStock;
-    }
-
-    public ArrayList<AdminData> getArrayList(){
-        return Accounts;
     }
 
     public void LoadAdminData() { //logic for AdminLogin class
@@ -64,9 +62,7 @@ public class Dataloader {
         }
     }
 
-
-
-    public void loadstock() { // logic for Stock items inside stock.txt file
+    public void loadstock() { // logic for Stock class
         try {
             File file = new File(filepathStockData);
             Scanner scanner = new Scanner(file);
@@ -79,15 +75,15 @@ public class Dataloader {
 
                 stockData.name = tempitem[0]; //created a new instance of stockdata, and changing the item name to tempitem and loading the name into stockdata
                 stockData.price = tempitem[1];
-                stockData.Quantity = tempitem[2];
-                stockData.runningtotal = Float.parseFloat(tempitem[1]);
+                stockData.Quantity = Integer.parseInt(tempitem[2]);
+                stockData.runningtotal = Float.parseFloat(tempitem[3]);
                 CurrentStock.add(stockData);
 
-                float pricetofloat = Float.parseFloat(tempitem[2]);
+                float pricetofloat = Float.parseFloat(tempitem[1]);
                 stockData.setItemPrice(pricetofloat);
                 int stockInt = Integer.parseInt(tempitem[2]);
                 stockData.setaccountinstock(stockInt);
-                float totalcashprice = Float.parseFloat(tempitem[2]);
+                float totalcashprice = Float.parseFloat(tempitem[3]);
                 stockData.setRunningtotal(totalcashprice);
             }
 
@@ -100,7 +96,7 @@ public class Dataloader {
         }
     }
 
-    public void loadbankdata(){
+    public void loadbankdata(){ //logic for BankVerificationClass
         try {
             File file = new File(filepathBankdata); //Process starts by setting up file
             Scanner scanner = new Scanner(file); // Scanner keyword is used to read each line between breakpoint within file

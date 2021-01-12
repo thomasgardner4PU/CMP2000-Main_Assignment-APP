@@ -7,13 +7,19 @@ public class StockData {
 
     public String price;
 
-    public String Quantity;
+    public int Quantity;
 
     public float runningtotal;
 
     public float setItemName;
 
+    public int BoughtItems;
+
     //Start of Getters statements
+
+    public int getBoughtItems() {
+        return BoughtItems;
+    }
 
     public float getRunningtotal(){
         return runningtotal;
@@ -27,25 +33,29 @@ public class StockData {
         return price;
     }
 
-    public String GetQuantity() {
+    public int GetQuantity() {
     return Quantity;
     }
 
     //Start of setter statements
 
+    public void setBoughtItems(int BoughtItems){
+        this.BoughtItems = BoughtItems;
+    }
+
     public void setRunningtotal(float runningtotal) {
         this.runningtotal = runningtotal;
     }
 
-    public void Setname(String itemName){
+    public void setName(String itemName){
         this.name = itemName;
     }
 
-    public void Setprice(String itemPrice){
+    public void setPrice(String itemPrice){
         this.price = itemPrice;
     }
 
-    public void SetQuantity(String itemQuantity){
+    public void setQuantity(int itemQuantity){
         this.Quantity = itemQuantity;
     }
 

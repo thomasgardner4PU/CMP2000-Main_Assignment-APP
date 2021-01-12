@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminLogin extends JFrame {
@@ -21,7 +22,7 @@ public class AdminLogin extends JFrame {
         Dataloader dataloader = new Dataloader();
         dataloader.LoadAdminData();
 
-        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem("nextPage");
+        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem();
         Page.setVisible(true);
         String filePath = ("src//resources//admin.txt");
             try {
