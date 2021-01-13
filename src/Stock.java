@@ -68,7 +68,7 @@ public class Stock extends JFrame {
     public void FillTextAdmin() {
         String stock = "";
         for(StockData item : CurrentStock){
-            stock += item.name + "   |   " + item.Quantity + "\n";
+            stock += item.Barcode + "   |   " + item.name + "   |   " + item.Quantity + "\n";
         }
         textArea1.setText(stock);
     }
@@ -76,7 +76,7 @@ public class Stock extends JFrame {
     public int findItem(String id){
         int pos = -1; //gives position of an item with the array
         for(StockData item : CurrentStock){
-            if(item.name.equals(id)){
+            if(item.Barcode.equals(id)){
                 pos = CurrentStock.indexOf(item);
             }
         }
@@ -120,17 +120,20 @@ public class Stock extends JFrame {
 
                 StockData stockData = new StockData();
 
-                stockData.name = tempitem[0]; //created a new instance of stockdata, and changing the item name to tempitem and loading the name into stockdata
-                stockData.price = tempitem[1];
-                stockData.Quantity = Integer.parseInt(tempitem[2]);
-                stockData.runningtotal = Float.parseFloat(tempitem[3]);
+                stockData.Barcode = tempitem[0];
+                stockData.name = tempitem[1]; //created a new instance of stockdata, and changing the item name to tempitem and loading the name into stockdata
+                stockData.price = tempitem[2];
+                stockData.Quantity = Integer.parseInt(tempitem[3]);
+                stockData.runningtotal = Float.parseFloat(tempitem[4]);
                 CurrentStock.add(stockData);
 
-                float pricetofloat = Float.parseFloat(tempitem[1]);
+                String barcode = tempitem[0];
+                stockData.setBarcode(barcode);
+                float pricetofloat = Float.parseFloat(tempitem[2]);
                 stockData.setItemPrice(pricetofloat);
-                int stockInt = Integer.parseInt(tempitem[2]);
+                int stockInt = Integer.parseInt(tempitem[3]);
                 stockData.setaccountinstock(stockInt);
-                float totalcashprice = Float.parseFloat(tempitem[3]);
+                float totalcashprice = Float.parseFloat(tempitem[4]);
                 stockData.setRunningtotal(totalcashprice);
             }
 
@@ -153,6 +156,9 @@ public class Stock extends JFrame {
                 if(index > 0) {
                     dataRow += "\n"; //adds data to next line
                 }
+
+                String barcode = (CurrentStock.get(index).getBarcode());
+                dataRow += barcode;
 
                 String name = (CurrentStock.get(index).Getname());
                 dataRow += name;

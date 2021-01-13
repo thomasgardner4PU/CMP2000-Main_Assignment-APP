@@ -5,12 +5,14 @@ public class AdminData {
     String username;
     String password;
 
-    public AdminData() {
-    }
 
     public AdminData(String loginName, String loginPassword) {
         this.username = loginName;
         this.password = loginPassword;
+    }
+
+    public AdminData() {
+
     }
 
     public String GetUsername() {

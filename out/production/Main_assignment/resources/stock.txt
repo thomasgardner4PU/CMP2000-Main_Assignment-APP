@@ -1,4 +1,4 @@
-beans|3.00|11|0
-brownbread|2.00|5|0
-whitebread|2.50|6|0
-flour|1.50|17|0
+2468|beans|3.00|11|0
+4890|brownbread|2.00|5|0
+5679|whitebread|2.50|6|0
+1049|flour|1.50|17|0

@@ -59,8 +59,8 @@ public class Kiosk extends JFrame {
                 itemsList.setText("");
                 String itemname = txtField.getText();
                 for (StockData k : Map.keySet()) {
-                    System.out.println(k.name + ":" + itemname);
-                    if (k.name.equals(itemname)) { //if the name of the current item we're iteralting through equals what we entered
+                    System.out.println(k.Barcode + ":" + itemname);
+                    if (k.Barcode.equals(itemname)) { //if the name of the current item we're iteralting through equals what we entered
                         Map.put(k, Map.get(k) + 1); // we're adding 1 onto the current amount of item's amount the customer is buying
                     }
                 }
@@ -68,7 +68,7 @@ public class Kiosk extends JFrame {
                 for (StockData k : Map.keySet()) {
                     total += Map.get(k) * Double.parseDouble(k.price);
                     if (Map.get(k) > 0) { // displays if more then 0 has been ordered
-                        itemsList.setText(itemsList.getText() + Map.get(k) + " x " + k.name + "\n" + "£"+ k.price + "each" + "\n" + "\n" + "\n" + "\n");
+                        itemsList.setText(itemsList.getText() + Map.get(k) + " x " + k.name + "....Barcode: " + k.Barcode + "\n" + "£"+ k.price + "each" + "\n" + "\n" + "\n");
                     }
                 }
                 TotalLbl.setText(String.valueOf(total));

@@ -58,17 +58,20 @@ public class Reciept extends JFrame {
 
                 StockData stockData = new StockData();
 
-                stockData.name = tempitem[0]; //created a new instance of stockdata, and changing the item name to tempitem and loading the name into stockdata
-                stockData.price = tempitem[1];
-                stockData.Quantity = Integer.parseInt(tempitem[2]);
-                stockData.runningtotal = Float.parseFloat(tempitem[3]);
+                stockData.Barcode = tempitem[0];
+                stockData.name = tempitem[1]; //created a new instance of stockdata, and changing the item name to tempitem and loading the name into stockdata
+                stockData.price = tempitem[2];
+                stockData.Quantity = Integer.parseInt(tempitem[3]);
+                stockData.runningtotal = Float.parseFloat(tempitem[4]);
                 CurrentStock.add(stockData);
 
-                float pricetofloat = Float.parseFloat(tempitem[1]);
+                String barcode = tempitem[0];
+                stockData.setBarcode(barcode);
+                float pricetofloat = Float.parseFloat(tempitem[2]);
                 stockData.setItemPrice(pricetofloat);
-                int stockInt = Integer.parseInt(tempitem[2]);
+                int stockInt = Integer.parseInt(tempitem[3]);
                 stockData.setaccountinstock(stockInt);
-                float totalcashprice = Float.parseFloat(tempitem[3]);
+                float totalcashprice = Float.parseFloat(tempitem[4]);
                 stockData.setRunningtotal(totalcashprice);
             }
 
@@ -97,7 +100,7 @@ public class Reciept extends JFrame {
                 for (StockData k : Kiosk.Map.keySet()) {
                     total += Kiosk.Map.get(k) * Double.parseDouble(k.price);
                     if (Kiosk.Map.get(k) > 0) { // displays if more then 0 has been ordered
-                        shoppingListTxt.setText(shoppingListTxt.getText() + Kiosk.Map.get(k) + " x " + k.name + "\n" + k.price + "\n£ each");
+                        shoppingListTxt.setText(shoppingListTxt.getText() + Kiosk.Map.get(k) + " x " + k.name + ".... Barcode: " + k.Barcode + "\n" + "£" + k.price + "each" + "\n");
                     }
                 }
                 shoppingListTxt.setText(shoppingListTxt.getText() + "Total: " + total);
