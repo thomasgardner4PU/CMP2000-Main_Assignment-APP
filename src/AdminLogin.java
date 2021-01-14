@@ -16,6 +16,7 @@ public class AdminLogin extends JFrame {
     private JTextField txtPassword;
 
     public ArrayList<AdminData> accountsDatabase = new ArrayList<>();
+    // This ArrayList is calling the variables inside AdminData
 
     public void setAccountsDatabase(ArrayList<AdminData> accountsDatabase) {
         this.accountsDatabase = accountsDatabase;
@@ -33,7 +34,7 @@ public class AdminLogin extends JFrame {
         LoginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AuthenticateUser();
+                AuthenticateUser(); // calls method containing functionality
             }
         });
     }
@@ -42,11 +43,13 @@ public class AdminLogin extends JFrame {
     public void AuthenticateUser() {
         boolean matchNotFound = true;
         if (txtUserName.getText().isEmpty() | txtPassword.getText().isEmpty()) {
+            // Is stating that if no data is being inputted into both JTextfields then display message below
             JOptionPane.showMessageDialog(null,"Please put in valid username and password");
         }
         else {
             for (int i = 0; i <accountsDatabase.size(); i++) {
                 if (accountsDatabase.get(i).getUsername().equals(txtUserName.getText()) && accountsDatabase.get(i).getPassword().equals(txtPassword.getText())){
+                    // calls the getUsername and getPassword from within stockdata which the ArrayList accountsDatabase uses, and applies data being inputted into both Jtextfields
                     matchNotFound = false;
                     break;
                 }

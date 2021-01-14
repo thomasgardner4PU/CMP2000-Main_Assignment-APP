@@ -91,16 +91,16 @@ public class Reciept extends JFrame {
 
             @Override
             protected Void doInBackground() throws Exception {
-                System.out.println("Swing Worker Thread: " + Thread.currentThread().getName());
+                System.out.println("Swing Worker Thread: " + Thread.currentThread().getName()); //start of Swing Method
                 shoppingListTxt.setText("Printing Receipt");
-                Thread.sleep(4000);
-                shoppingListTxt.setText("");
-                    //shoppingListTxt.setText(Dataloader.CompanyName + "\n" + Dataloader.DateOfPayment);
-                double total = 0.0;
+                Thread.sleep(4000); // delay when printing reciept
+                shoppingListTxt.setText(""); //displays items inside shoppingList textfield
+                double total = 0.0; // declares datatype for total
                 for (StockData k : Kiosk.Map.keySet()) {
                     total += Kiosk.Map.get(k) * Double.parseDouble(k.price);
                     if (Kiosk.Map.get(k) > 0) { // displays if more then 0 has been ordered
                         shoppingListTxt.setText(shoppingListTxt.getText() + Kiosk.Map.get(k) + " x " + k.name + ".... Barcode: " + k.Barcode + "\n" + "£" + k.price + "each" + "\n");
+                        //prints out the name, barcode and price inside the shoppingList textfield
                     }
                 }
                 shoppingListTxt.setText(shoppingListTxt.getText() + "Total: " + total);

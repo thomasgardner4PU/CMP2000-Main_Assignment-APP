@@ -16,10 +16,10 @@ public class Dataloader {
         return Accounts;
     }
 
-    //ArrayList for StockData constructor
+    //ArrayList for StockData object
     public ArrayList<StockData> CurrentStock = new ArrayList<>();
 
-    //ArrayList for BankData constructor
+    //ArrayList for BankData object
     private static final ArrayList<BankData> BankVerification = new ArrayList<BankData>();
 
     // Getters for ArrayLists
@@ -60,12 +60,12 @@ public class Dataloader {
         }
     }
 
-    public void loadstock() { // logic for Stock class
+    public void loadstock() { // logic for StockAdmin class
         try {
             File file = new File(filepathStockData);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
-                String tablerow = scanner.nextLine();
+                String tablerow = scanner.nextLine(); // scans each line wihtin stock.txt
 
                 String[] tempitem = tablerow.split(separator);
 

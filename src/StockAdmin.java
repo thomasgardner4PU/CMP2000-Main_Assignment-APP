@@ -32,7 +32,7 @@ public class StockAdmin extends JFrame {
 
     public StockAdmin(String title){
 
-        loadstock(); //calling method// loadstock
+        loadstock(); //calling method loadstock
         System.out.println(CurrentStock);
 
         FillTextAdmin();
