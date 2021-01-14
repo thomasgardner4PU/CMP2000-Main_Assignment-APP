@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,11 +6,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Stock extends JFrame {
+public class StockAdmin extends JFrame {
 
     public String filepathStockData = "src\\resources\\stock.txt";
     public String separator = "\\|";
@@ -30,12 +28,11 @@ public class Stock extends JFrame {
     private JButton SaveBtn;
     private JTextField txtItemID;
     private JTextField txtQuantityNeeded;
-    private String id;
 
 
-    public Stock(String title){
+    public StockAdmin(String title){
 
-        loadstock(); //calling function loadstock
+        loadstock(); //calling method// loadstock
         System.out.println(CurrentStock);
 
         FillTextAdmin();
@@ -68,7 +65,7 @@ public class Stock extends JFrame {
     public void FillTextAdmin() {
         String stock = "";
         for(StockData item : CurrentStock){
-            stock += item.Barcode + "   |   " + item.name + "   |   " + item.Quantity + "\n";
+            stock += item.Barcode + "   |   " + item.name + "   |   " +item.price + "   |   " + item.Quantity + "\n";
         }
         textArea1.setText(stock);
     }
@@ -95,7 +92,7 @@ public class Stock extends JFrame {
         }}
     }
 
-    public void updateStock(){ //this method will update the number of items inside the textArea
+    public void updateStock(){ //this object will update the number of items inside the textArea
         try{
             String StockString = txtItemID.getText();
             int numberToAdd = Integer.parseInt(txtQuantityNeeded.getText());
@@ -109,7 +106,7 @@ public class Stock extends JFrame {
         txtItemID.setText("");
     }
 
-    public void loadstock() { // function that communicates with
+    public void loadstock() { // Object that communicates with Dataloader
         try {
             File file = new File(filepathStockData);
             Scanner scanner = new Scanner(file);

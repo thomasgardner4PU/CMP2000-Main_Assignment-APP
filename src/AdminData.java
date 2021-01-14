@@ -15,11 +15,11 @@ public class AdminData {
 
     }
 
-    public String GetUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public String GetPassword() {
+    public String getPassword() {
         return password;
     }
 

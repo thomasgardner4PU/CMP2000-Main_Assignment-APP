@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class AdminLogin extends JFrame {
 
@@ -15,49 +15,44 @@ public class AdminLogin extends JFrame {
     private JTextField txtUserName;
     private JTextField txtPassword;
 
-    static AdminData[] accountsDatabase = new AdminData[1];
+    public ArrayList<AdminData> accountsDatabase = new ArrayList<>();
 
-    public static void main(String[] args ) {
+    public void setAccountsDatabase(ArrayList<AdminData> accountsDatabase) {
+        this.accountsDatabase = accountsDatabase;
+    }
 
-        Dataloader dataloader = new Dataloader();
-        dataloader.LoadAdminData();
-
-        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem();
-        Page.setVisible(true);
-        String filePath = ("src//resources//admin.txt");
-            try {
-                File file = new File(filePath);
-
-                try (Scanner scanner = new Scanner(file)) {
-                    scanner.useDelimiter("\n"); //
-                    while (scanner.hasNextLine()) {
-                        for (int i = 0; i < accountsDatabase.length; i++) {
-                            String tempName = scanner.nextLine();
-                            String tempPassword = scanner.nextLine();
-                            accountsDatabase[i] = new AdminData(tempName, tempPassword);
-                        }
-                    }
-                }
-            }catch (FileNotFoundException e){
-                e.printStackTrace();
-            }
-        }
-
-
-        public AdminLogin() {
+    public AdminLogin() {
         setContentPane(MainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
         pack();
-        LoginBtn.addActionListener(e -> AuthenticateUser(txtUserName.getText(), txtPassword.getText()));
+        Dataloader dataloader = new Dataloader();
+        dataloader.LoadAdminData();
+        setAccountsDatabase(dataloader.getAccounts());
+
+        LoginBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AuthenticateUser();
+            }
+        });
     }
 
-    public void AuthenticateUser(String usernameData, String passwordData) {
+
+    public void AuthenticateUser() {
         boolean matchNotFound = true;
-        for (int i = 0; i <accountsDatabase.length; i++) {
-            if (accountsDatabase[i].username.equals(usernameData) && accountsDatabase[i].password.equals(passwordData)){
-                matchNotFound = false;
-                break;
+        if (txtUserName.getText().isEmpty() | txtPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Please put in valid username and password");
+        }
+        else {
+            for (int i = 0; i <accountsDatabase.size(); i++) {
+                if (accountsDatabase.get(i).getUsername().equals(txtUserName.getText()) && accountsDatabase.get(i).getPassword().equals(txtPassword.getText())){
+                    matchNotFound = false;
+                    break;
+                }
+                else {
+                    System.out.println("Test works");
+                }
             }
         }
 
@@ -66,10 +61,11 @@ public class AdminLogin extends JFrame {
         }
 
         else {
-            Stock nextPage = new Stock("NextPage");
+            StockAdmin nextPage = new StockAdmin("NextPage");
             nextPage.setVisible(true);
         }
     }
 }
+
 
 

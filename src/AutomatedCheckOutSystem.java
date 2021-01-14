@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 public class AutomatedCheckOutSystem extends JFrame {
 
+    public static void main(String[] args){
+        AutomatedCheckOutSystem Page = new AutomatedCheckOutSystem();
+        Page.setVisible(true);
+    }
+
     private JPanel mainPanel;
     private JLabel welcomeLbl;
     private JButton BeginScanBtn;

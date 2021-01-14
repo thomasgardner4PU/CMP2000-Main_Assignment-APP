@@ -6,11 +6,15 @@ public class Dataloader {
 
     public String filePathAdminData = "src\\resources\\admin.txt";
     public String filepathStockData = "src\\resources\\stock.txt";
-    public static String filepathBankdata = "src\\resources\\bankInformation.txt"; //file does not exsist yet
+    public static String filepathBankdata = "src\\resources\\bankInformation.txt";
     public String separator = "\\|";
 
     // ArrayList for AdminLogin constructor
     public ArrayList<AdminData> Accounts = new ArrayList<>();
+
+    public ArrayList<AdminData> getAccounts() {
+        return Accounts;
+    }
 
     //ArrayList for StockData constructor
     public ArrayList<StockData> CurrentStock = new ArrayList<>();
@@ -41,7 +45,7 @@ public class Dataloader {
 
                 admin.setUsername(TempAccount[0]);
 
-                admin.setPassword(TempAccount[0]);
+                admin.setPassword(TempAccount[1]);
 
                 Accounts.add(admin);
 
